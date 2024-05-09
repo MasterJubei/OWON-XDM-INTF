@@ -160,8 +160,12 @@ class XdmMeter():
 	
 	def set_mode(self, mode: cmds):
 		self.get_response(f'CONF:{mode}')
+
 	def get_mode(self):
-		return self.get_response('FUNC?')
+		return self.get_response('FUNC?', Numeric=False)
+	
+	def get_measurement(self):
+		return self.get_response('MEAS?',Numeric=True)
 
 	
 if __name__ == "__main__":
@@ -186,6 +190,10 @@ if __name__ == "__main__":
 	print(xdm.cmds.VOLT)
 	resp = xdm.set_mode(xdm.cmds.VOLT)
 
+	resp = xdm.get_measurement()
+
 	resp = xdm.get_response('MEAS?',Numeric=True)
 	print(resp)
+
+	# 
 						
