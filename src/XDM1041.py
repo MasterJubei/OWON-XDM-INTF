@@ -90,17 +90,17 @@ class SCPI:
 
 class XdmMeter:
     class cmds(Enum):
-        VOLT = ("VOLT",)
-        VOLT_AC = ("VOLT:AC",)
-        CURR = ("CURR",)
-        CURR_AC = ("CURR:AC",)
-        RES = ("RES",)
-        CAP = ("CAP",)
-        FREQ = ("FREQ",)
-        PER = ("PER",)
-        TEMP = ("TEMP",)
-        DIODE = ("DIOD",)
-        CONT = ("CONT",)
+        VOLT    =  ("VOLT",)
+        VOLT_AC =  ("VOLT:AC",)
+        CURR    =  ("CURR",)
+        CURR_AC =  ("CURR:AC",)
+        RES     =  ("RES",)
+        CAP     =  ("CAP",)
+        FREQ    =  ("FREQ",)
+        PER     =  ("PER",)
+        TEMP    =  ("TEMP",)
+        DIODE   =  ("DIOD",)
+        CONT    =  ("CONT",)
 
         def __str__(self):
             return self.name
@@ -165,6 +165,9 @@ class XdmMeter:
 
     def get_measurement(self):
         return self.get_response("MEAS?", Numeric=True)
+    
+    def close(self):
+        self.MiniBM.__del__()
 
 
 if __name__ == "__main__":
